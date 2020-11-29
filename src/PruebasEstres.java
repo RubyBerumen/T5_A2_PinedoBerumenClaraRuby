@@ -20,7 +20,9 @@ class MetodosOrdenamiento{
 		
 		static long tInicio, tFin;
 		
-		public static void ordenacionBurbuja1(int [] numeros) {
+		
+		public static void ordenacionBurbuja1(int [] nums) {
+			int numeros [] = nums.clone();
 			tInicio=System.nanoTime();
 			for (int i=1; i<=numeros.length-1; i++) {
 				for (int j=0; j<=numeros.length-i-1; j++) {
@@ -35,7 +37,8 @@ class MetodosOrdenamiento{
 			System.out.println("Tiempo de ejecucion en ordenamiento por burbuja1:"+(tFin-tInicio));
 		}// Burbuja1
 		
-		public static void ordenacionBurbuja2(int [] numeros) {
+		public static void ordenacionBurbuja2(int [] nums) {
+			int numeros [] = nums.clone();
 			tInicio = System.nanoTime();
             for(int i=1; i<numeros.length; i++) {
 				
@@ -52,7 +55,8 @@ class MetodosOrdenamiento{
 			System.out.println("Tiempo de ejecucion en ordenamiento por burbuja2: " + (tFin-tInicio));
 		}// Burbuja2
 		
-		public static void ordenacionBurbuja3(int [] numeros) {
+		public static void ordenacionBurbuja3(int [] nums) {
+			int numeros [] = nums.clone();
 			 tInicio = System.nanoTime();
 	           int i=1;
 	     	   do {
@@ -84,7 +88,8 @@ class MetodosOrdenamiento{
 		
 		static long tInicio, tFin;
 		
-		public static void ordenar(int[]numeros) {
+		public static void ordenar(int[]nums) {
+			int numeros [] = nums.clone();
 			tInicio=System.nanoTime();
 			int aux;
 			for (int i = 0; i < numeros.length; i++) {
@@ -106,7 +111,8 @@ class MetodosOrdenamiento{
 		
 		static long tInicio, tFin;
 		
-		public static void ordenamiento(int []numeros) {
+		public static void ordenamiento(int []nums) {
+			int numeros [] = nums.clone();
 			tInicio=System.nanoTime();
 			for (int i = 0; i < numeros.length-1; i++) {
 				for (int j = i; j < numeros.length; j++) {
@@ -127,7 +133,8 @@ class MetodosOrdenamiento{
 	
 	static class Quicksort{
 		
-		public static int[] ordenar (int[]numeros, int izq, int der) {
+		public static int[] ordenar (int[]nums, int izq, int der) {
+			int numeros [] = nums.clone();
 
 			int pivote = numeros[izq];
 			int i = izq, j = der;
@@ -167,7 +174,8 @@ class MetodosOrdenamiento{
 		
 		static long tInicio, tFin;
 		
-		public static void ordenar(int[] numeros) {
+		public static void ordenar(int[] nums) {
+			int numeros [] = nums.clone();
 			tInicio=System.nanoTime();
 			int intervalo;
 			intervalo = numeros.length/2;
@@ -201,7 +209,8 @@ class MetodosOrdenamiento{
 		
 		static long tInicio, tFin;
 		
-		public static void orden(int[]numeros) {
+		public static void orden(int[]nums) {
+			int numeros [] = nums.clone();
 			tInicio=System.nanoTime();
 		      if(numeros.length == 0)
 		          return;
