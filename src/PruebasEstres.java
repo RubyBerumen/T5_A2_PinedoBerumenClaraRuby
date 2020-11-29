@@ -181,23 +181,33 @@ class MetodosOrdenamiento{
 	
 	static class Quicksort{
 		
+		static long tInicio, tFin;
+		static long  recorridos = 0, comparaciones = 0, intercambios = 0, tiempo = 0;
 		public static int[] ordenar (int[]nums, int izq, int der) {
 			int numeros [] = nums.clone();
+			
+			tInicio=System.nanoTime();
 
 			int pivote = numeros[izq];
 			int i = izq, j = der;
 			int aux;
-			
+			recorridos+=1;
 			while (i<j) {
+				comparaciones+=1;
+				recorridos+=1;
 				while(numeros[i]<=pivote && i<j) i++;
+				comparaciones+=1;
+				recorridos+=1;
 				while(numeros[j]>pivote) j--;
 				if(i<j) {
+					intercambios+=1;
 					aux = numeros[i];
 					numeros[i]=numeros[j];
 					numeros[j]=aux;
 				}
 				
 			}
+			intercambios+=1;
 			numeros[izq] = numeros[j];
 			numeros[j] = pivote;
 			
@@ -208,12 +218,25 @@ class MetodosOrdenamiento{
 			if(j+1 < der) {
 				ordenar(numeros,j+1,der);
 			}
-				
-			
 			return numeros;
-			
-			
 		}
+		
+        public static void llamadaQuicksort(int nums[]) {
+        	int numeros[]=nums.clone();
+        	
+        	tInicio = System.nanoTime();
+        	ordenar(numeros,0,numeros.length-1);
+			tFin = System.nanoTime();
+			
+			tiempo = tFin-tInicio;
+			System.out.print("Quicksort:	");
+			System.out.print(tiempo + "        ");
+			System.out.print(recorridos + "    ");
+			System.out.print(comparaciones + "     ");
+			System.out.println(intercambios);
+		
+        	
+        }
 		
 	}//quicksort
 	
@@ -333,7 +356,7 @@ class LlamadaMetodos{
 		MetodosOrdenamiento.Burbuja.ordenacionBurbuja3(n);
 		MetodosOrdenamiento.Insercion.ordenar(n);
 		MetodosOrdenamiento.Seleccion.ordenamiento(n);
-		//MetodosOrdenamiento.Quicksort.ordenar(n, 0, n.length);
+		MetodosOrdenamiento.Quicksort.llamadaQuicksort(n);
 		MetodosOrdenamiento.Shellsort.ordenar(n);
 		MetodosOrdenamiento.Radix.orden(n);
 	}
@@ -343,14 +366,17 @@ public class PruebasEstres {
 
 	public static void main(String[] args) {
 		
-		System.out.println("--------------------1000 números");
+		System.out.println("----------------------1000 números----------------------");
+		System.out.println("Método          Tiempo     Rec     Comp      Int");
 		LlamadaMetodos.llamar(NumerosAleatorios.generarNumeros(1000));
 		System.out.println();
-		System.out.println("--------------------10000 números");
+		System.out.println("----------------------10000 números---------------------");
+		System.out.println("Método          Tiempo       Rec      Comp        Int");
 		LlamadaMetodos.llamar(NumerosAleatorios.generarNumeros(10000));
 		System.out.println();
-		System.out.println("--------------------100000 números");
-		//LlamadaMetodos.llamar(NumerosAleatorios.generarNumeros(100000));
+		System.out.println("----------------------100000 números--------------------");
+		System.out.println("Método          Tiempo         Rec      Comp        Int");
+		LlamadaMetodos.llamar(NumerosAleatorios.generarNumeros(100000));
 		
 
 
