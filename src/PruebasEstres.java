@@ -82,9 +82,11 @@ class MetodosOrdenamiento{
 	
 	static class Insercion{
 		
+		static long tInicio, tFin;
+		
 		public static void ordenar(int[]numeros) {
+			tInicio=System.nanoTime();
 			int aux;
-			
 			for (int i = 0; i < numeros.length; i++) {
 				aux = numeros[i];
 				
@@ -94,7 +96,7 @@ class MetodosOrdenamiento{
 				}
 				
 			}
-			
+			tFin = System.nanoTime();
 		}
 	}//class insercion
 	
@@ -102,7 +104,10 @@ class MetodosOrdenamiento{
 	
 	static class Seleccion{
 		
+		static long tInicio, tFin;
+		
 		public static void ordenamiento(int []numeros) {
+			tInicio=System.nanoTime();
 			for (int i = 0; i < numeros.length-1; i++) {
 				for (int j = i; j < numeros.length; j++) {
 					if(numeros[i]> numeros[j]) {
@@ -113,6 +118,7 @@ class MetodosOrdenamiento{
 					
 				}
 			}
+			tFin = System.nanoTime();
 		}
 		
 	}//class Seleccion
@@ -122,6 +128,7 @@ class MetodosOrdenamiento{
 	static class Quicksort{
 		
 		public static int[] ordenar (int[]numeros, int izq, int der) {
+
 			int pivote = numeros[izq];
 			int i = izq, j = der;
 			int aux;
@@ -139,12 +146,18 @@ class MetodosOrdenamiento{
 			numeros[izq] = numeros[j];
 			numeros[j] = pivote;
 			
-			if(izq<j-1)
+			if(izq<j-1) {
 				ordenar(numeros,izq,j-1);
-			if(j+1 < der)
+			}
+				
+			if(j+1 < der) {
 				ordenar(numeros,j+1,der);
+			}
+				
 			
 			return numeros;
+			
+			
 		}
 		
 	}//quicksort
@@ -152,7 +165,10 @@ class MetodosOrdenamiento{
 	
 	static class Shellsort{
 		
+		static long tInicio, tFin;
+		
 		public static void ordenar(int[] numeros) {
+			tInicio=System.nanoTime();
 			int intervalo;
 			intervalo = numeros.length/2;
 			
@@ -173,6 +189,7 @@ class MetodosOrdenamiento{
 				}
 				intervalo=intervalo/2;
 			}
+			tFin = System.nanoTime();
 			
 		}//public void ordenar
 		
@@ -182,7 +199,10 @@ class MetodosOrdenamiento{
 	
 	static class Radix{
 		
+		static long tInicio, tFin;
+		
 		public static void orden(int[]numeros) {
+			tInicio=System.nanoTime();
 		      if(numeros.length == 0)
 		          return;
 		          int[][] np = new int[numeros.length][2];
@@ -213,6 +233,7 @@ class MetodosOrdenamiento{
 		          for(l=q[i];l!=-1;l=np[l][1])
 		        	  numeros[j++] = np[l][0];
 		       }//for
+		       tFin = System.nanoTime();
 		}//orden
 		
 	}//class Radix
